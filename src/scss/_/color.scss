@@ -1,0 +1,103 @@
+@import "Bootstrap";
+
+// 主要色系
+$main-blue: #111c47;
+$main-green: #6FAD22;
+$main-brown: #554A32;
+$main-red: #B10E0E;
+$main-yellow: #F9DE45;
+$main-orange: #F17500;
+
+// 藍色系
+$blue-003: #3368C6;
+$blue-004: #3D6DC1;
+$blue-005: #0083D2;
+$blue-006: #00A2D9;
+
+// 灰色都用 bootstrap
+
+// 其他色系
+$other-001: #B3B7C6;
+$other-002: #8093A8;
+$other-003: #00B900;
+
+$main-black: #232323;
+$action-logout: #18336c;
+$main-category: #191919;
+	
+
+// 主要色系
+.bg-mainBlue { background-color:$main-blue; }
+.bg-mainRed  { background-color:$main-red; }
+.bg-mainYellow  { background-color:$main-yellow;}
+
+.text-mainBlue { color:$main-blue; }
+.text-mainRed  { color:$main-red; }
+.text-mainYellow  { color:$main-yellow; }
+
+.border-mainBlue { border-color:$main-blue; }
+.border-mainRed  { border-color:$main-red; }
+.border-mainYellow  { border-color:$main-yellow; }
+
+
+// 藍色系
+.bg-blue001  { background-color:$blue-800; } 
+.bg-blue002  { background-color:$blue-700; }
+.bg-blue003  { background-color:$blue-003; }
+.bg-blue004  { background-color:$blue-004; }
+.bg-blue005  { background-color:$blue-005; }
+.bg-blue006  { background-color:$blue-006; }
+
+.text-blue001  { color:$blue-800; }
+.text-blue002  { color:$blue-700; }
+.text-blue003  { color:$blue-003; }
+.text-blue004  { color:$blue-004; }
+.text-blue005  { color:$blue-005; }
+.text-blue006  { color:$blue-006; }
+
+.border-blue001  { border-color:$blue-800; }
+.border-blue002  { border-color:$blue-700; }
+.border-blue003  { border-color:$blue-003; }
+.border-blue004  { border-color:$blue-004; }
+.border-blue005  { border-color:$blue-005; }
+.border-blue006  { border-color:$blue-006; }
+
+
+// 灰色系
+.bg-gray001  { background-color:$gray-800; }
+.bg-gray002  { background-color:$gray-600; }
+.bg-gray003  { background-color:$gray-500; }
+.bg-gray004  { background-color:$gray-300; }
+.bg-gray005  { background-color:$gray-200; }
+.bg-gray006  { background-color:$gray-100; }
+
+.text-gray001  { color:$gray-800; }
+.text-gray002  { color:$gray-600; }
+.text-gray003  { color:$gray-500; }
+.text-gray004  { color:$gray-300; }
+.text-gray005  { color:$gray-200; }
+.text-gray006  { color:$gray-100; }
+
+.border-gray001  { border-color:$gray-800; }
+.border-gray002  { border-color:$gray-600; }
+.border-gray003  { border-color:$gray-500; }
+.border-gray004  { border-color:$gray-300; }
+.border-gray005  { border-color:$gray-200; }
+.border-gray006  { border-color:$gray-100; }
+
+
+// 其他系
+.bg-other001  { background-color:$other-001; } 
+.bg-other002  { background-color:$other-002; }
+.bg-other003  { background-color:$other-003; }
+
+.text-other001  { color:$other-001; }
+.text-other002  { color:$other-002; }
+.text-other003  { color:$other-003; }
+
+.border-other001  { border-color:$other-001; }
+.border-other002  { border-color:$other-002; }
+.border-other003  { border-color:$other-003; }
+
+
+

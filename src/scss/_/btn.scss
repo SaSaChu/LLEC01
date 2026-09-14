@@ -1,0 +1,118 @@
+@import "Bootstrap";
+@import "color";
+
+.btn-xxl { padding: 0.5rem 1rem;}
+.btn-xl { padding: 0.4rem 1rem;}
+.btn-l { padding: 0.3rem 1rem;}
+.btn-s { padding: 0.2rem .8rem;}
+.btn-xs { padding: 0.1rem .8rem;}
+
+.btnSF {
+		// display: flex;
+		// justify-content: center;
+		align-items: center;
+		border-radius: 0.3rem;
+		text-decoration: none;
+		line-height: 1.5;
+
+	&.btnMainBlud {
+		color: $white;
+		background-color: $main-blue;
+		border: 0;
+
+		&:hover {
+			opacity: .9;
+		}
+	}
+
+	&.btnBlud001 {
+		color: $white;
+		background-color: $blue-004;
+		border: 0;
+
+		&:hover {
+			background-color: $blue-700;
+		}
+	}
+
+	&.btnBlud002 {
+		color: $white;
+		background-color: $blue-006;
+		border: 0;
+
+		&:hover {
+			background-color: $blue-700;
+		}
+	}
+
+	&.btnBlud003 {
+		color: $white;
+		background-color: $blue-700;
+		border: 1px solid $blue-700;
+
+		&:hover {
+			border: 1px solid $blue-700;
+			opacity: .9;
+		}
+	}
+
+	&.btnBlud003-line {
+		color:  $blue-700;
+		background-color: $white;
+		border: 1px solid  $blue-700;
+
+		&:hover {
+			color: $white;
+			background-color: $blue-700;
+			border: 1px solid $blue-700;
+		}
+	}
+
+	&.btnBlud004 {
+		color: $white;
+		background-color: $blue-005;
+		border: 0;
+
+		&:hover {
+			background-color: $blue-700;
+		}
+	}
+
+	&.btnOtherGreen {
+		color: $white;
+		background-color: $other-003;
+		border: 0;
+
+		&:hover {
+			opacity: .9;
+		}
+	}
+
+	&.btnOtherGray {
+		color: $white;
+		background-color: $other-001;
+		border: 0;
+
+		&:hover {
+			background-color: $blue-700;
+		}
+	}
+
+	&.btnOtherGray-line {
+		color: $other-001;
+		background-color: $white;
+		border: 1px solid $other-001;
+
+		&:hover {
+			color: $white;
+			background-color: $blue-004;
+			border: 1px solid $blue-004;
+		}
+	}
+}
+
+
+
+
+
+

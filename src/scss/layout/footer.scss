@@ -1,0 +1,522 @@
+@use "sass:math";
+@import "../_/Bootstrap";
+@import "../_/color";
+@import "../_/_Lib";
+
+.site-footer {
+  width: 100%;
+
+  a {
+    text-decoration: none;
+  }
+
+  /* Simple Footer */
+  &__simple-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 94px;
+    gap: 30px;
+  }
+
+  &__simple-copyright {
+    color: $action-logout;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  &__simple-nav {
+    display: flex;
+    align-items: center;
+
+    a {
+      position: relative;
+      padding: 0 20px;
+      color: $action-logout;
+      font-size: 15px;
+      font-weight: 500;
+      transition: opacity .2s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 1px;
+        height: 18px;
+        background: $action-logout;
+        transform: translateY(-50%);
+      }
+
+      &:last-child {
+        padding-right: 0;
+
+        &::after {
+          display: none;
+        }
+      }
+
+      &:hover {
+        opacity: .7;
+      }
+    }
+  }
+
+  /* Common Green Footer */
+  &__title {
+    margin: 0 0 22px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__link-group {
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      a {
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.4;
+        transition: opacity .2s ease;
+
+        &:hover {
+          opacity: .75;
+        }
+      }
+    }
+  }
+
+  /* Main Footer */
+  &__main-grid {
+    display: grid;
+    grid-template-columns: 1.65fr .7fr .8fr .85fr 1.4fr;
+    gap: 45px;
+    padding: 38px 10px 50px;
+  }
+
+  &__customer {
+    min-width: 0;
+  }
+
+  &__phone {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  &__phone-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    color: $main-orange;
+
+    i {
+      font-size: 19px;
+    }
+  }
+
+  &__phone-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    color: #fff;
+
+    span {
+      font-size: 13px;
+    }
+
+    strong {
+      font-size: 23px;
+      line-height: 1.1;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__service-time {
+    margin-top: 20px;
+
+    p {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.4;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  /* Social */
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #fff;
+      color: $main-green;
+      font-size: 19px;
+      transition: opacity .2s ease;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
+
+  /* Subscribe */
+  &__subscribe {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    margin-top: 28px;
+    padding: 6px;
+    border-radius: 3px;
+    background: #fff;
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 0 10px;
+      border: 0;
+      outline: 0;
+      font-size: 14px;
+    }
+
+    button {
+      flex-shrink: 0;
+      min-width: 105px;
+      border: 0;
+      border-radius: 3px;
+      background: $main-orange;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s ease;
+
+      &:hover {
+        opacity: .85;
+      }
+    }
+  }
+
+  &__subscribe-text {
+    margin: 10px 0 0;
+    color: #fff;
+    font-size: 13px;
+  }
+
+  /* Logo Footer */
+  &__logo-grid {
+    display: grid;
+    grid-template-columns: 2fr .75fr .85fr 1fr;
+    gap: 65px;
+    padding: 30px 10px 45px;
+  }
+
+  &__brand-logo {
+    display: inline-block;
+
+    img {
+      display: block;
+      width: auto;
+      max-width: 185px;
+      max-height: 80px;
+    }
+  }
+
+  /* Bottom */
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 70px;
+    border-top: 1px solid rgba(255, 255, 255, .65);
+  }
+
+  &__payment {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #fff;
+
+    strong {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    img {
+      display: block;
+      width: auto;
+      max-width: 305px;
+      height: 26px;
+      object-fit: contain;
+    }
+  }
+
+  &__copyright {
+    color: #fff;
+    font-size: 13px;
+
+    strong {
+      margin: 0 2px;
+      font-weight: 700;
+    }
+  }
+}
+
+/* Simple */
+.footer--simple {
+  background: #fff;
+}
+
+/* Main */
+.footer--main {
+  background: $main-green;
+}
+
+/* Logo */
+.footer--logo {
+  background: $main-green;
+}
+
+/* <= XL */
+@include media-breakpoint-down(xl) {
+  .site-footer {
+    &__main-grid {
+      grid-template-columns: 1.5fr .7fr .8fr .9fr 1.25fr;
+      gap: 28px;
+    }
+
+    &__logo-grid {
+      grid-template-columns: 1.6fr .8fr .9fr 1fr;
+      gap: 40px;
+    }
+
+    &__phone-info {
+      strong {
+        font-size: 20px;
+      }
+    }
+
+    &__subscribe {
+      button {
+        min-width: 90px;
+      }
+    }
+  }
+}
+
+/* <= LG */
+@include media-breakpoint-down(lg) {
+  .site-footer {
+    &__simple-inner {
+      flex-direction: column;
+      justify-content: center;
+      min-height: 110px;
+      gap: 18px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    &__main-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 35px 50px;
+    }
+
+    &__customer {
+      grid-column: span 2;
+    }
+
+    &__follow {
+      grid-column: span 2;
+    }
+
+    &__subscribe {
+      max-width: 500px;
+    }
+
+    &__logo-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+    }
+
+    &__brand {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+/* Mobile <= MD */
+@include media-breakpoint-down(md) {
+  .site-footer {
+    &__simple-inner {
+      align-items: flex-start;
+      min-height: 0;
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+
+    &__simple-copyright {
+      font-size: 13px;
+    }
+
+    &__simple-nav {
+      flex-wrap: wrap;
+      gap: 12px 0;
+
+      a {
+        padding: 0 12px;
+        font-size: 13px;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &::after {
+          height: 14px;
+        }
+      }
+    }
+
+    &__main-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 30px 0;
+    }
+
+    &__customer,
+    &__follow {
+      grid-column: auto;
+    }
+
+    &__title {
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    &__link-group {
+      display: grid;
+      grid-template-columns: 95px minmax(0, 1fr);
+      align-items: start;
+      gap: 18px;
+
+      .site-footer__title {
+        margin: 0;
+      }
+
+      nav {
+        gap: 10px;
+      }
+    }
+
+    &__phone-info {
+      strong {
+        font-size: 19px;
+      }
+    }
+
+    &__social {
+      a {
+        width: 34px;
+        height: 34px;
+        font-size: 17px;
+      }
+    }
+
+    &__subscribe {
+      max-width: none;
+      height: 46px;
+
+      button {
+        min-width: 85px;
+      }
+    }
+
+    &__logo-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding: 30px 0;
+    }
+
+    &__brand {
+      grid-column: auto;
+    }
+
+    &__brand-logo {
+      img {
+        max-width: 140px;
+      }
+    }
+
+    &__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 15px;
+      min-height: 100px;
+      padding: 15px 0;
+    }
+
+    &__payment {
+      flex-wrap: wrap;
+      gap: 8px 12px;
+
+      img {
+        max-width: 250px;
+        height: auto;
+      }
+    }
+
+    &__copyright {
+      line-height: 1.5;
+    }
+  }
+}
+
+/* <= SM */
+@include media-breakpoint-down(sm) {
+  .site-footer {
+    &__simple-nav {
+      a {
+        padding: 0 10px;
+      }
+    }
+
+    &__link-group {
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 15px;
+    }
+
+    &__phone {
+      align-items: flex-start;
+    }
+
+    &__phone-icon {
+      width: 46px;
+      height: 46px;
+    }
+
+    &__payment {
+      img {
+        max-width: 220px;
+      }
+    }
+  }
+}

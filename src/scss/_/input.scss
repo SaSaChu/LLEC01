@@ -1,0 +1,71 @@
+@import "Bootstrap";
+@import "color";
+
+.form-select, .form-control {
+	color: $main-blue !important;
+	font-weight: 300 !important;
+}
+
+.form-select:focus {
+  border-color: $gray-300 !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 0rem rgba(179, 183, 198, 0) !important;
+}
+
+.form-mainBlue {
+	color: $main-blue;
+	border: 1px solid $main-blue;
+
+	&:focus {
+    border-color: $main-blue;
+    outline: 0;
+    box-shadow: 0 0 0 0rem rgba(179, 183, 198, 0);
+	}
+}
+
+.form-control {
+	&:focus {
+		color: $main-blue;
+    border-color: $main-blue !important;
+    outline: 0;
+    box-shadow: 0 0 0 0rem rgba(179, 183, 198, 0) !important;
+	}
+
+	&::placeholder {
+		font-weight: 300 !important;
+		color: $gray-500;
+	}
+}
+
+.input-group-text {
+	color: $gray-500 !important;
+	background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.form-outBoard {
+	  border: 1px solid #ced4da;
+}
+
+.form-outBoard-top {
+	  border-left: 1px solid #ced4da;
+	  border-top: 1px solid #ced4da;
+	  border-right: 1px solid #ced4da;
+}
+
+.form-noBoard {
+	border: 0 !important;
+}
+
+.form-bottomBoard {
+	border-left: 0 !important;
+  border-top: 0 !important;
+  border-right: 0 !important;
+	border-bottom: 1px solid #ced4da !important;
+	border-radius: 0 !important;
+}
+
+
+
+
