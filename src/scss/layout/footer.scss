@@ -62,7 +62,7 @@
     }
   }
 
-  /* Common Green Footer */
+  /* Common */
   &__title {
     margin: 0 0 22px;
     color: #fff;
@@ -71,6 +71,8 @@
   }
 
   &__link-group {
+    min-width: 0;
+
     nav {
       display: flex;
       flex-direction: column;
@@ -92,12 +94,46 @@
   /* Main Footer */
   &__main-grid {
     display: grid;
-    grid-template-columns: 1.65fr .7fr .8fr .85fr 1.4fr;
-    gap: 45px;
+    grid-template-columns: 310px minmax(0, 1fr);
+    align-items: start;
+    gap: 60px;
     padding: 38px 10px 50px;
   }
 
   &__customer {
+    width: 310px;
+    min-width: 0;
+    justify-self: start;
+  }
+
+  &__main-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    min-width: 0;
+    gap: 50px;
+
+    .site-footer__link-group {
+      flex-shrink: 0;
+    }
+  }
+
+  &__link-group--about {
+    width: 150px;
+  }
+
+  &__link-group--help {
+    width: 170px;
+  }
+
+  &__link-group--service {
+    width: 200px;
+  }
+
+  &__follow {
+    flex-shrink: 0;
+    width: 300px;
     min-width: 0;
   }
 
@@ -137,6 +173,7 @@
       font-size: 23px;
       line-height: 1.1;
       letter-spacing: 1px;
+      white-space: nowrap;
     }
   }
 
@@ -165,6 +202,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
       width: 38px;
       height: 38px;
       border-radius: 50%;
@@ -225,9 +263,16 @@
   /* Logo Footer */
   &__logo-grid {
     display: grid;
-    grid-template-columns: 2fr .75fr .85fr 1fr;
-    gap: 65px;
+    grid-template-columns: 280px minmax(0, 1fr);
+    align-items: start;
+    gap: 60px;
     padding: 30px 10px 45px;
+  }
+
+  &__brand {
+    width: 280px;
+    min-width: 0;
+    justify-self: start;
   }
 
   &__brand-logo {
@@ -238,6 +283,19 @@
       width: auto;
       max-width: 185px;
       max-height: 80px;
+    }
+  }
+
+  &__logo-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    min-width: 0;
+    gap: 50px;
+
+    .site-footer__link-group {
+      flex-shrink: 0;
     }
   }
 
@@ -259,6 +317,7 @@
     strong {
       font-size: 13px;
       font-weight: 700;
+      white-space: nowrap;
     }
 
     img {
@@ -273,6 +332,7 @@
   &__copyright {
     color: #fff;
     font-size: 13px;
+    white-space: nowrap;
 
     strong {
       margin: 0 2px;
@@ -281,32 +341,64 @@
   }
 }
 
-/* Simple */
 .footer--simple {
   background: #fff;
 }
 
-/* Main */
 .footer--main {
   background: $main-green;
 }
 
-/* Logo */
 .footer--logo {
   background: $main-green;
 }
 
-/* <= XL */
 @include media-breakpoint-down(xl) {
   .site-footer {
     &__main-grid {
-      grid-template-columns: 1.5fr .7fr .8fr .9fr 1.25fr;
-      gap: 28px;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 35px;
+    }
+
+    &__customer {
+      width: 280px;
+    }
+
+    &__main-right {
+      gap: 25px;
     }
 
     &__logo-grid {
-      grid-template-columns: 1.6fr .8fr .9fr 1fr;
-      gap: 40px;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 35px;
+    }
+
+    &__brand {
+      width: 220px;
+    }
+
+    &__logo-right {
+      gap: 35px;
+    }
+
+    &__link-group--about {
+      width: 120px;
+    }
+
+    &__link-group--help {
+      width: 140px;
+    }
+
+    &__link-group--service {
+      width: 165px;
+    }
+
+    &__follow {
+      width: 250px;
+    }
+
+    &__phone {
+      gap: 12px;
     }
 
     &__phone-info {
@@ -323,7 +415,6 @@
   }
 }
 
-/* <= LG */
 @include media-breakpoint-down(lg) {
   .site-footer {
     &__simple-inner {
@@ -335,35 +426,45 @@
       padding-bottom: 20px;
     }
 
-    &__main-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 35px 50px;
-    }
-
-    &__customer {
-      grid-column: span 2;
-    }
-
-    &__follow {
-      grid-column: span 2;
-    }
-
-    &__subscribe {
-      max-width: 500px;
-    }
-
+    &__main-grid,
     &__logo-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 35px;
     }
 
+    &__customer,
     &__brand {
-      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    &__main-right,
+    &__logo-right {
+      justify-content: flex-end;
+      gap: 30px;
+    }
+
+    &__link-group--about {
+      width: 120px;
+    }
+
+    &__link-group--help {
+      width: 140px;
+    }
+
+    &__link-group--service {
+      width: 165px;
+    }
+
+    &__follow {
+      width: 220px;
+    }
+
+    &__subscribe {
+      max-width: 100%;
     }
   }
 }
 
-/* Mobile <= MD */
 @include media-breakpoint-down(md) {
   .site-footer {
     &__simple-inner {
@@ -395,15 +496,25 @@
       }
     }
 
-    &__main-grid {
-      grid-template-columns: 1fr;
-      gap: 30px;
+    &__main-grid,
+    &__logo-grid {
+      display: block;
       padding: 30px 0;
     }
 
     &__customer,
-    &__follow {
-      grid-column: auto;
+    &__brand {
+      width: 100%;
+      margin-bottom: 32px;
+    }
+
+    &__main-right,
+    &__logo-right {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      gap: 28px;
     }
 
     &__title {
@@ -411,10 +522,12 @@
       font-size: 15px;
     }
 
-    &__link-group {
+    &__main-right &__link-group,
+    &__logo-right &__link-group {
       display: grid;
       grid-template-columns: 95px minmax(0, 1fr);
       align-items: start;
+      width: 100%;
       gap: 18px;
 
       .site-footer__title {
@@ -426,10 +539,20 @@
       }
     }
 
+    &__link-group--about,
+    &__link-group--help,
+    &__link-group--service {
+      width: 100%;
+    }
+
     &__phone-info {
       strong {
         font-size: 19px;
       }
+    }
+
+    &__follow {
+      width: 100%;
     }
 
     &__social {
@@ -447,16 +570,6 @@
       button {
         min-width: 85px;
       }
-    }
-
-    &__logo-grid {
-      grid-template-columns: 1fr;
-      gap: 28px;
-      padding: 30px 0;
-    }
-
-    &__brand {
-      grid-column: auto;
     }
 
     &__brand-logo {
@@ -486,11 +599,11 @@
 
     &__copyright {
       line-height: 1.5;
+      white-space: normal;
     }
   }
 }
 
-/* <= SM */
 @include media-breakpoint-down(sm) {
   .site-footer {
     &__simple-nav {
@@ -499,7 +612,8 @@
       }
     }
 
-    &__link-group {
+    &__main-right &__link-group,
+    &__logo-right &__link-group {
       grid-template-columns: 90px minmax(0, 1fr);
       gap: 15px;
     }
