@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Cart Step 1</title>
+
+	<!-- 共用 js -->
+	<script language="javascript" type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+	<script language="javascript" type="text/javascript" src="js/public.js"></script>
+
+	<!-- 共用 css -->
+	<link rel="stylesheet" type="text/css" href="css/icon.css">
+
+	<!-- 共用外部引入檔案 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+	<!-- 共用外部 js 檔案 在頁面最下方 -->
+
+	<!-- 自訂 css -->
+	<!-- 產品詳細有使用輪播套件 swiper -->
+	<link rel="stylesheet" type="text/css" href="css/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" type="text/css" href="css/shopping_cart.css">
+	<link rel="stylesheet" href="css/layout/header.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+
+	<!-- 自訂 js  -->
+	<!-- 產品詳細有使用輪播套件 swiper -->
+	<script language="javascript" type="text/javascript" src="js/swiper/swiper-bundle.min.js"></script>
+	<script language="javascript" type="text/javascript" src="js/shopping_cart.js"></script>
+
+</head>
+
+<body>
+
+	<div data-header="sub" class="shopping-cart-header"></div>
+
+	<main class="pb-5">	
+		<div class="container">
+			<div class="col-12 col-lg-11 mx-auto">
+				<div class="shopping_cart_step pt-lg-5">
+					<div class="row">
+						<div class="col">
+							<h4 class="active">➊  確認訂購內容</h4>
+						</div>
+						<div class="col">
+							<h4 class="">➋  填寫訂單資料</h4>
+						</div>
+						<div class="col">
+							<h4 class="">➌  完成訂購</h4>
+						</div>
+					</div>
+				</div>
+
+				<!-- Cart 列表 有分網頁版跟手機版-->
+				<div class="shopping_cart_list mt-3 mt-lg-5">
+					<!-- Cart Tip -->
+					<div class="cart_list_tip mb-3">
+					  <div class="row align-items-center">
+					    <div class="col-12 col-lg-6">
+					      <div class="row g-0 align-items-center">
+					        <div class="col-1 me-2 me-lg-0">
+					          <img class="img-fluid" src="images/svg-pic/icon-truck.svg" alt="">
+					        </div>
+					        <div class="col-10">
+					          <p>單筆消費滿1000元，即享免運費（配送地區僅限於台灣本島）</p>
+					        </div>
+					      </div>
+					    </div>
+					    <div class="col-6 d-none d-lg-block text-end">
+					      <button id="del-all" class="btnSF btnOtherGray btn-xxl fs-6 fw-medium mb-2" type="button">全部刪除</button>
+					    </div>
+					  </div>
+					</div>					
+					
+					<!-- Cart 清單 有分網頁版跟手機版 -->
+					<div class="cart_list_content">
+						<!-- 網頁版列表 -->
+						<div class="web_list_cart d-none d-lg-block">
+							<!-- cart list 第一列資訊 thread -->
+							<div class="web_list_content_header">
+								<div class="row g-0 align-items-center p-2">
+									<!-- 勾選欄位 -->
+									<div class="col flex-shrink-1 position-relative">
+										<label class="check_label">
+											<input type="checkbox" id="check-all-cart">
+											<span class="checkmark"></span>
+										</label>
+									</div>
+									<!-- 產品資訊欄位 -->
+									<div class="col-3 flex-grow-1">
+										產品資訊
+									</div>
+									<!-- 優惠欄位 -->
+									<div class="col-2">
+										優惠
+									</div>
+									<!-- 數量欄位 -->
+									<div class="col-2  text-center">
+										數量
+									</div>
+									<!-- 原價欄位 -->
+									<div class="col-1  text-center">
+										原價
+									</div>
+									<!-- 折扣價欄位 -->
+									<div class="col-1  text-center">
+										折扣價
+									</div>
+									<!-- 小計欄位 -->
+									<div class="col-1  text-center">
+										小計
+									</div>
+									<!-- 動作欄位 -->
+									<div class="col-1  text-center">
+										刪除
+									</div>
+								</div>
+							</div>
+							<!-- cart content 購物車列表 tbody-->
+							<div class="web_list_content_body">
+								<!-- foreach start -->
+								<div class="cart-list-item row g-0 align-items-center px-2 py-3">
+									<!-- 勾選欄位 -->
+									<div class="ckehck_field col flex-shrink-1 position-relative">
+										<label class="check_label">
+											<input type="checkbox">
+											<span class="checkmark"></span>
+										</label>
+									</div>
+
+									<!-- 產品資訊欄位 -->
+									<div class="info_field col-3 flex-grow-1">
+										<div class="card border-0">
+											<div class="row g-0">
+												<div class="col-md-4">
+													<div class="img_field">
+														<picture class="d-inline-block ratio ratio-1x1">
+															<img src="https://sunflower-mall-dev-bucket.s3.ap-northeast-1.amazonaws.com/product/17114352275772.webp" class="img-fluid" alt="">
+														</picture>	
+													</div>
+												</div>
+												<div class="col-md-8">
+													<div class="card-body">
+														<h5 class="card-title">彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+														<p class="card-text change_btn mb-0">尺寸：<span data-bs-toggle="modal" data-bs-target="#changeModal" role="button">L</span></p>
+														<p class="card-text change_btn mb-0">顏色：<span data-bs-toggle="modal" data-bs-target="#changeModal" role="button">暢銷混色組</span></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 優惠欄位 -->
+									<div class="offer_field col-2">
+										<!-- 合購組合樣式
+											<span class="offer_tag">合購組合</span>
+											<p class="offer_item">任選2件 1000</p> 
+										-->
+
+										<!-- 優惠卷折扣樣式 
+											<span class="offer_tag coupon_tag">優惠卷折扣</span>
+											<p class="offer_item">折 100元</p>
+										 -->
+									</div>
+
+									<!-- 數量欄位 -->
+									<div class="count_field col-2 text-center">
+										<span class="count_btn decrease-count" aria-label="Decrease">-</span>
+										<input class="count_value" type="text" role="spinbutton" aria-valuenow="1" value="1" readonly>
+										<span class="count_btn increase-count" aria-label="Increase">+</span>
+									</div>
+
+									<!-- 原價欄位 -->
+									<div class="original_field price_symbol col-1  text-center">
+										<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+										<span data-symbol="NT$ "> 1899 </span>
+									</div>
+
+									<!-- 折扣價欄位 -->
+									<div class="discount_field price_symbol col-1  text-center">
+										<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+										<span data-symbol="NT$"> 840 </span>
+									</div>
+
+									<!-- 小計欄位 -->
+									<div class="subtotal_field price_symbol col-1  text-center">
+										<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+										<span data-symbol="NT$ "> 840 </span>
+									</div>
+
+									<!-- 動作欄位 -->
+									<div class="action_field col-1  text-center">
+										<button class="btnSF btnOtherGray-line btn-xxl fs-7 fw-medium mb-2" type="button">移除</button> 
+										<button class="btnSF btnOtherGray-line btn-xxl fs-7 fw-medium mb-2" type="button">加到最愛</button> 
+									</div>
+								</div>
+								<!-- foreach end -->
+
+								<!-- 展示優惠欄位 合購組合樣式 -->
+								<div class="cart-list-item row g-0 align-items-center px-2 py-3">
+									<!-- 勾選欄位 -->
+									<div class="ckehck_field col flex-shrink-1 position-relative">
+										<label class="check_label">
+											<input type="checkbox">
+											<span class="checkmark"></span>
+										</label>
+									</div>
+
+									<!-- 產品資訊欄位 -->
+									<div class="info_field col-3 flex-grow-1">
+										<div class="card border-0">
+											<div class="row g-0">
+												<div class="col-md-4">
+													<div class="img_field">
+														<picture class="d-inline-block ratio ratio-1x1">
+															<img src="https://sunflower-mall-dev-bucket.s3.ap-northeast-1.amazonaws.com/product/17114352275772.webp" class="img-fluid" alt="">
+														</picture>	
+													</div>
+												</div>	
+												<div class="col-md-8">
+													<div class="card-body">
+													<h5 class="card-title">彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+													<p class="card-text change_btn mb-0">尺寸：<span data-bs-toggle="modal" data-bs-target="#changeModal" role="button">L</span></p>
+													<p class="card-text change_btn mb-0">顏色：<span data-bs-toggle="modal" data-bs-target="#changeModal" role="button">暢銷混色組</span></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 優惠欄位 -->
+									<div class="offer_field col-2">
+										<span class="offer_tag">合購組合</span>
+										<p class="offer_item">任選2件 1000</p>
+									</div>
+
+									<!-- 數量欄位 -->
+									<div class="count_field col-2 text-center">
+										<span class="count_btn decrease-count" aria-label="Decrease">-</span>
+										<input class="count_value" type="text" role="spinbutton" aria-valuenow="1" value="1" readonly>
+										<span class="count_btn increase-count" aria-label="Increase">+</span>
+									</div>
+
+									<!-- 原價欄位 -->
+									<div class="original_field price_symbol col-1 text-center">
+										<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+										<span data-symbol="NT$ "> 1899 </span>
+									</div>
+
+									<!-- 折扣價欄位 -->
+									<div class="discount_field price_symbol col-1 text-center">
+										<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+										<span data-symbol="NT$"> 840 </span>
+									</div>
+
+									<!-- 小計欄位 -->
+									<div class="subtotal_field price_symbol col-1 text-center">
+										<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+										<span data-symbol="NT$ "> 840 </span>
+									</div>
+
+									<!-- 動作欄位 -->
+									<div class="action_field col-1  text-center">
+										<button class="btnSF btnOtherGray-line btn-xxl fs-7 fw-medium mb-2" type="button">移除</button> 
+										<button class="btnSF btnOtherGray-line btn-xxl fs-7 fw-medium mb-2" type="button">加到最愛</button> 
+									</div>
+								</div>
+
+								<!-- 展示優惠欄位 優惠卷折扣  -->
+								<div class="row g-0 align-items-center px-2 py-3">
+									<!-- 勾選欄位 -->
+									<div class="ckehck_field col flex-shrink-1 position-relative">
+										<label class="check_label">
+											<input type="checkbox">
+											<span class="checkmark"></span>
+										</label>
+									</div>
+
+									<!-- 產品資訊欄位 -->
+									<div class="info_field col-3 flex-grow-1">
+										<div class="card border-0">
+											<div class="row g-0">
+												<div class="col-md-4">
+													<div class="img_field">
+														<picture class="d-inline-block ratio ratio-1x1">
+															<img src="https://sunflower-mall-dev-bucket.s3.ap-northeast-1.amazonaws.com/product/17114352275772.webp" class="img-fluid" alt="">
+														</picture>	
+													</div>
+												</div>
+												<div class="col-md-8">
+													<div class="card-body">
+														<h5 class="card-title">彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+														<p class="card-text change_btn mb-0">尺寸：<span data-bs-toggle="modal" data-bs-target="#changeModal" role="button">L</span></p>
+														<p class="card-text change_btn mb-0">顏色：<span data-bs-toggle="modal" data-bs-target="#changeModal" role="button">暢銷混色組</span></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 優惠欄位 -->
+									<div class="offer_field col-2">
+										<span class="offer_tag coupon_tag">優惠卷折扣</span>
+										<p class="offer_item">折 100元</p>
+									</div>
+
+									<!-- 數量欄位 -->
+									<div class="count_field col-2 text-center">
+										<span class="count_btn decrease-count" aria-label="Decrease">-</span>
+										<input class="count_value" type="text" role="spinbutton" aria-valuenow="1" value="1" readonly>
+										<span class="count_btn increase-count" aria-label="Increase">+</span>
+									</div>
+
+									<!-- 原價欄位 -->
+									<div class="original_field price_symbol col-1  text-center">
+										<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+										<span data-symbol="NT$ "> 1899 </span>
+									</div>
+
+									<!-- 折扣價欄位 -->
+									<div class="discount_field price_symbol col-1  text-center">
+										<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+										<span data-symbol="NT$"> 840 </span>
+									</div>
+
+									<!-- 小計欄位 -->
+									<div class="subtotal_field price_symbol col-1  text-center">
+										<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+										<span data-symbol="NT$ "> 840 </span>
+									</div>
+
+									<!-- 動作欄位 -->
+									<div class="action_field col-1  text-center">
+										<button class="btnSF btnOtherGray-line btn-xxl fs-7 fw-medium mb-2" type="button">移除</button> 
+										<button class="btnSF btnOtherGray-line btn-xxl fs-7 fw-medium mb-2" type="button">加到最愛</button> 
+									</div>
+								</div>
+
+								<!-- 贈品 -->
+								<div class="row g-0 align-items-center px-2 py-3">
+									<!-- 贈品標籤 -->
+									<div class="exchange_field col-12 mb-2">
+										<span class="gifts_tag">贈品</span>
+										<span class="gifts_text">全館滿 1000 送贈品</span>
+									</div>
+									<!-- 勾選欄位 -->
+									<div class="ckehck_field col flex-shrink-1 position-relative">
+										<label class="check_label">
+											<span class="checkmark opacity-0"></span>
+										</label>
+									</div>
+
+									<!-- 產品資訊欄位 -->
+									<div class="info_field col-3 flex-grow-1">
+										<div class="card border-0">
+											<div class="row g-0">
+												<div class="col-md-4">
+													<div class="img_field">
+														<picture class="d-inline-block ratio ratio-1x1">
+															<img src="https://sunflower-mall-dev-bucket.s3.ap-northeast-1.amazonaws.com/product/17114352275772.webp" class="img-fluid" alt="">
+														</picture>	
+													</div>
+												</div>
+												<div class="col-md-8">
+													<div class="card-body">
+														<h5 class="card-title">彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+														<p class="card-text change_btn mb-0">尺寸：<span data-bs-toggle="modal" data-bs-target="#changeModal" role="button">L</span></p>
+														<p class="card-text change_btn mb-0">顏色：<span data-bs-toggle="modal" data-bs-target="#changeModal" role="button">暢銷混色組</span></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 優惠欄位 -->
+									<div class="offer_field col-2"></div>
+
+									<!-- 數量欄位 -->
+									<div class="count_field col-2 text-center">
+										<span>1</span>
+									</div>
+
+									<!-- 原價欄位 -->
+									<div class="original_field price_symbol col-1  text-center">
+										
+									</div>
+
+									<!-- 折扣價欄位 -->
+									<div class="discount_field price_symbol col-1  text-center"></div>
+
+									<!-- 小計欄位 -->
+									<div class="subtotal_field price_symbol col-1  text-center"></div>
+
+									<!-- 動作欄位 -->
+									<div class="action_field col-1  text-center">
+										<button class="btnSF btnOtherGray-line btn-xxl fs-7 fw-medium mb-2" type="button">移除</button> 
+									</div>
+								</div>
+
+								<!-- 紅利點數兌換 -->
+								<div class="row g-0 align-items-center px-2 py-3">
+									<!-- 紅利點數兌換標籤 -->
+									<div class="exchange_field col-12 mb-2">
+										<span class="point_tag">紅利點數兌換</span>
+									</div>
+
+									<!-- 勾選欄位 -->
+									<div class="ckehck_field col flex-shrink-1 position-relative">
+										<label class="check_label">
+											<span class="checkmark opacity-0"></span>
+										</label>
+									</div>
+
+									<!-- 產品資訊欄位 -->
+									<div class="info_field col-3 flex-grow-1">
+										<div class="card border-0">
+											<div class="row g-0 align-items-center">
+												<div class="col-md-4">
+													<picture class="d-inline-block ratio ratio-1x1">
+														<img src="https://sunflower-mall-dev-bucket.s3.ap-northeast-1.amazonaws.com/product/17114352275772.webp" class="img-fluid" alt="">
+													</picture>
+												</div>
+												<div class="col-md-8">
+													<div class="card-body">
+														<h5 class="mb-0">50黑 1/2休閒襪</h5>
+														<p class="d-flex align-items-center fs-8">點數：<span class="text-mainRed">4000點</span></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 優惠欄位 -->
+									<div class="offer_field col-2"></div>
+
+									<!-- 數量欄位 -->
+									<div class="count_field col-2 text-center">
+										<span>1</span>
+									</div>
+
+									<!-- 折扣價欄位 -->
+									<div class="original_field price_symbol col-1 text-center"></div>
+
+									<!-- 小計欄位 -->
+									<div class="discount_field price_symbol col-1 text-center"></div>
+									<div class="subtotal_field price_symbol col-1 text-center"></div>
+
+									<!-- 動作欄位 -->
+									<div class="action_field col-1  text-center">
+										<button class="btnSF btnOtherGray-line btn-xxl fs-7 fw-medium mb-2" type="button">移除</button> 
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 手機版 -->
+						<div class="mobile_list_cart d-block d-lg-none">
+							<!-- cart content 第一列資訊 thread -->
+							<div class="mobile_list_content_header">
+								<div class="row g-0 align-items-center">
+									<div class="col-6">
+										<label class="check_label">
+											<input type="checkbox" id="mobile-check-all-cart">
+											<span class="checkmark"></span>
+											全選
+										</label>
+									</div>
+									
+									<div class="col-6 text-end">
+										<button id="del-all" class="btn btn-secondary" type="button">全部刪除</button>
+									</div>
+								</div>
+							</div>	
+
+							<!-- cart content 購物車列表 tbody-->
+							<div class="mobile_list_content_body">
+								<!-- foreach start -->
+								<div class="mobile-cart-list-item">
+									<div class="row py-3">
+										<div class="col flex-shrink-1 pe-0">
+											<!-- 贈品或加購時不顯示 checkbox -->
+											<div class="ckehck_field position-relative">
+												<label class="check_label">
+													<!-- 贈品或加購時不顯示 拿掉 input checkbox -->
+													<input type="checkbox">
+													<!-- 贈品或加購時不顯示 checkamrk後面加上 class opacity-0 ex: class="checkmark opacity-0"-->
+													<span class="checkmark"></span>
+												</label>
+											</div>
+										</div>
+										<div class="col-4 flex-grow-1 px-1">
+											<div class="img_field">
+												<div class="ratio ratio-1x1">
+													<img src="http://fakeimg.pl/100x100?text=img1" class="img-fluid ratio ratio-1x1" alt="">
+												</div>
+											</div>
+											<div class="offer_field">
+												<!-- 合購組合 -->
+												<!-- <span class="offer_tag">合購組合</span>
+												<p class="offer_item">任選2件 1000</p> -->
+												<!-- 優惠卷折扣 -->
+												<!-- <span class="offer_tag coupon_tag">優惠卷折扣</span>
+												<p class="offer_item">折 100元</p> -->
+											</div>
+										</div>
+										<div class="col-6 px-1">
+											<div class="title_field">
+												<h5>彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+											</div>
+	
+											<!-- 開啟 offvancas  -->
+											<div class="size_color_field">
+												<span type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasChangeBottom" aria-controls="#offcanvasChangeBottom">暢銷混色組，L <i class="icon-angle-down "></i></span>
+											</div>
+	
+											<div class="count_field text-center">
+												<span class="count_btn decrease-count" aria-label="Decrease">-</span>
+												<input class="count_value" min="1" type="text" role="spinbutton" aria-valuenow="1" value="1" readonly>
+												<span class="count_btn increase-count" aria-label="Increase">+</span>
+											</div>
+	
+											<div class="original_field price_symbol">
+												原價：
+												<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+												<span data-symbol="NT$ "> 1899 </span>
+											</div>
+	
+											<div class="discount_field price_symbol">
+												特價：
+												<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+												<span data-symbol="NT$"> 840 </span>
+											</div>
+	
+											<div class="action_field text-center">
+												<div class="row">
+													<div class="col-6">
+														<button class="btnSF btnOtherGray-line btn-xs mb-2" type="button">加到最愛</button> 
+													</div>
+													<div class="col-6">
+														<button class="btnSF btnOtherGray-line btn-xs mb-2" type="button">移除</button> 
+													</div>
+												</div>
+											</div>
+										</div>									
+									</div>
+								</div>
+								<!-- foreach end -->
+
+								<!-- 展示優惠欄位 合購組合樣式 -->
+								<div class="mobilel-cart-list-item">
+									<div class="row py-3">
+										<div class="col flex-shrink-1 pe-0">
+											<div class="ckehck_field position-relative">
+												<label class="check_label">
+													<input type="checkbox">
+													<span class="checkmark"></span>
+												</label>
+											</div>
+										</div>
+										<div class="col-4 flex-grow-1 px-1">
+											<div class="img_field">
+												<div class="ratio ratio-1x1">
+													<img src="http://fakeimg.pl/100x100?text=img1" class="img-fluid ratio ratio-1x1" alt="">
+												</div>
+											</div>
+											<div class="offer_field">
+												<span class="offer_tag">合購組合</span>
+												<p class="offer_item">任選2件 1000</p>
+											</div>
+										</div>
+										<div class="col-6 px-1">
+											<div class="title_field">
+												<h5>彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+											</div>
+	
+											<div class="size_color_field">
+												<span type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasChangeBottom" aria-controls="#offcanvasChangeBottom">暢銷混色組，L<i class="icon-angle-down"></i></span>	
+											</div>
+	
+											<div class="count_field text-center">
+												<span class="count_btn decrease-count" aria-label="Decrease">-</span>
+												<input class="count_value" min="1" type="text" role="spinbutton" aria-valuenow="1" value="1" readonly>
+												<span class="count_btn increase-count" aria-label="Increase">+</span>
+											</div>
+	
+											<div class="original_field price_symbol">
+												原價：
+												<span data-symbol="NT$ "> 1899 </span>
+											</div>
+	
+											<div class="discount_field price_symbol">
+												特價：
+												<span data-symbol="NT$"> 840 </span>
+											</div>
+	
+											<div class="action_field text-center">
+												<div class="row">
+													<div class="col-6">
+														<button class="btnSF btnOtherGray-line btn-xs mb-2" type="button">加到最愛</button> 
+													</div>
+													<div class="col-6">
+														<button class="btnSF btnOtherGray-line btn-xs mb-2" type="button">移除</button> 
+													</div>
+												</div>
+											</div>
+										</div>									
+									</div>
+								</div>
+								
+								<!-- 展示優惠欄位 優惠卷折扣樣式 -->
+								<div class="mobile-cart-list-item">
+									<div class="row py-3">
+										<div class="col flex-shrink-1 pe-0">
+											<div class="ckehck_field position-relative">
+												<label class="check_label">
+													<input type="checkbox">
+													<span class="checkmark"></span>
+												</label>
+											</div>
+										</div>
+										<div class="col-4 flex-grow-1 px-1">
+											<div class="img_field">
+												<div class="ratio ratio-1x1">
+													<img src="http://fakeimg.pl/100x100?text=img1" class="img-fluid ratio ratio-1x1" alt="">
+												</div>
+											</div>
+											<div class="offer_field">
+												<span class="offer_tag coupon_tag">優惠卷折扣</span>
+												<p class="offer_item">折 100元</p>
+											</div>
+										</div>
+										<div class="col-6 px-1">
+											<div class="title_field">
+												<h5>彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+											</div>
+
+											<div class="size_color_field">
+												<span type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasChangeBottom" aria-controls="#offcanvasChangeBottom">暢銷混色組，L<i class="icon-angle-down"></i></span>							
+											</div>
+
+											<div class="count_field text-center">
+												<span class="count_btn decrease-count" aria-label="Decrease">-</span>
+												<input class="count_value" min="1" type="text" role="spinbutton" aria-valuenow="1" value="1" readonly>
+												<span class="count_btn increase-count" aria-label="Increase">+</span>
+											</div>
+
+											<div class="original_field price_symbol">
+												原價：
+												<span data-symbol="NT$ "> 1899 </span>
+											</div>
+
+											<div class="discount_field price_symbol">
+												特價：
+												<span data-symbol="NT$"> 840 </span>
+											</div>
+
+											<div class="action_field text-center">
+												<div class="row">
+													<div class="col-6">
+														<button class="btnSF btnOtherGray-line btn-xs mb-2" type="button">加到最愛</button> 
+													</div>
+													<div class="col-6">
+														<button class="btnSF btnOtherGray-line btn-xs mb-2" type="button">移除</button> 
+													</div>
+												</div>
+											</div>
+										</div>									
+									</div>
+								</div>
+
+								<!-- 展示贈品 -->
+								<div class="mobile-cart-list-item">
+									<div class="row py-3">
+										<!-- 贈品標籤 -->
+										<div class="exchange_field col-12 mb-2">
+											<span class="gifts_tag">贈品</span>
+											<span class="gifts_text">全館滿 1000 送贈品</span>
+										</div>
+										<div class="col flex-shrink-1 pe-0">
+											<!-- 贈品或加購時不顯示 check box -->
+											<div class="ckehck_field position-relative">
+												<label class="check_label">
+													<span class="checkmark opacity-0"></span>
+												</label>
+											</div>
+										</div>
+										<div class="col-4 flex-grow-1 px-1">
+											<div class="img_field">
+												<div class="ratio ratio-1x1">
+													<img src="http://fakeimg.pl/100x100?text=img1" class="img-fluid ratio ratio-1x1" alt="">	
+												</div>
+											</div>
+										</div>
+										<div class="col-6 px-1">
+											<div class="title_field">
+												<h5>彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+											</div>
+
+											<div class="size_color_field">
+												<span type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasChangeBottom" aria-controls="#offcanvasChangeBottom">暢銷混色組，L<i class="icon-angle-down"></i></span>
+											</div>
+
+											<div class="count_field text-center">
+												<p class="d-flex align-items-center m-0 ">
+													數量：<span>1</span>
+												</p>	
+											</div>
+
+											<div class="action_field text-center">
+												<div class="row">
+													<div class="col-6">
+														<button class="btnSF btnOtherGray-line btn-xs mb-2" type="button">移除</button> 
+													</div>
+												</div>
+											</div>
+										</div>									
+									</div>
+								</div>
+
+								<!-- 展示紅利點數兌換 -->
+								<div class="mobile-cart-list-item">
+									<div class="row py-3">
+										<!-- 紅利點數兌換 -->
+										<div class="exchange_field col-12 mb-2">
+											<span class="point_tag">紅利點數兌換</span>
+										</div>
+										<div class="col flex-shrink-1 pe-0">
+											<!-- 贈品或加購時不顯示 check box -->
+											<div class="ckehck_field position-relative">
+												<label class="check_label">
+													<span class="checkmark opacity-0"></span>
+												</label>
+											</div>
+										</div>
+										<div class="col-4 flex-grow-1 px-1">
+											<div class="img_field">
+												<div class="ratio ratio-1x1">
+													<img src="http://fakeimg.pl/100x100?text=img1" class="img-fluid ratio ratio-1x1" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="col-6 px-1">
+											<div class="title_field">
+												<h5 class="mb-0">50黑 1/2休閒襪</h5>
+												<p class="d-flex align-items-center">點數：<span class="text-mainRed">4000點</span></p>
+											</div>
+
+											<div class="count_field">
+												<p class="d-flex align-items-center m-0 ">
+													數量：<span>1</span>
+												</p>
+											</div>
+
+											<div class="action_field text-center">
+												<div class="row">
+													<div class="col-6">
+														<button class="btnSF btnOtherGray-line btn-xs mb-2" type="button">移除</button> 
+													</div>
+												</div>
+											</div>
+										</div>									
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Cart 享用之優惠  -->
+				<div class="shopping_cart_offer">
+						<!-- Cart 已享用優惠 -->
+					<div class="used_offer">
+						<h5 class="cart_title">已享用之優惠</h5>
+						<!-- @foreach start -->
+						<div class="row align-items-center mt-2">
+							<div class="col-8 col-lg-10">
+								<div class="d-flex">
+									<span class="offer_tag">合購組合</span>
+									<span class="offer_item">任選2件 1000 任選2件 1000 任選2件 1000 任選2件 1000 任選2件 1000 任選2件 1000任選2件 1000 任選2件 1000 任選2件 1000</span> 
+								</div>
+							</div>
+							<div class="col text-end">
+								<div class="offer_price price_symbol text-end">
+									<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+									<span data-symbol="- NT$ "> 260 </span>
+								</div>
+							</div>
+						</div>
+						<!-- @foreach end -->
+						<div class="row mt-2 align-items-center">
+							<div class="col-8 col-lg-10">
+								<div class="d-flex">
+									<span class="offer_tag">優惠促銷</span>
+									<span class="offer_item">全館滿千免運</span> 
+								</div>
+							</div>
+							<div class="col text-end">
+								<div class="offer_price price_symbol text-end">
+									<!-- span 如果是空的會自動放 '-' ，span 裡有空白都不算空-->
+									<span data-symbol="NT$"></span>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-2 align-items-center ">
+							<div class="col-8 col-lg-10">
+								<div class="d-flex">
+									<span class="offer_tag coupon_tag">優惠卷折扣</span>
+									<span class="offer_item">折扣 100元折扣 100元折扣 100元折扣 100元折扣 100元折扣 100元折扣 100元折扣 100元折扣 100元</span> 
+								</div>
+							</div>
+							<div class="col text-end">
+								<div class="offer_action text-end">
+									<button class="btnSF btnOtherGray-line btn-xxl fs-7 fw-medium" type="button">移除折扣</button> 
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Cart 未享用優惠 -->
+					<div class="other_offer">
+						<h5 class="cart_title">尚有更多優惠等著你！目前未享用：</h5>
+						<!-- @foreach start -->
+						<div class="row mt-2">
+							<div class="col-12 col-lg-10">
+								<div class="d-flex">
+									<span class="offer_tag">優惠促銷</span>
+									<span class="offer_item">任選5件 1500元 <span>再買 3 件，即享有優惠</span></span> 
+								</div>
+							</div>
+						</div>
+						<!-- @foreach start -->
+					</div>
+				</div>
+				
+				<!-- 優惠卷 -->
+				<div class="shopping_cart_coupon">	
+					<h5 class="cart_title">優惠卷</h5>
+					
+					<div class="row">
+						<div class="col-12 col-lg-6">
+							<div class="coupon">
+								<div class="col-12 col-lg-11">
+									<h6>我的優惠卷</h6>
+									<div class="row" >
+										<div class="col-8">
+											<select class="form-select" aria-label="請選擇">
+												<option selected="">請選擇</option>
+												<option value="1">One</option>
+												<option value="2">Two</option>
+												<option value="3">Three</option>
+											</select>
+										</div>
+										<div class="col-4">
+											<button type="button" class="btnSF btnBlud001 btn-l fs-6 fw-medium">兌換</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-6">
+							<div class="discount-code">
+								<div class="col-12 col-lg-11 mx-auto">
+									<h6>使用折扣碼</h6>
+									<div class="row" >
+										<div class="col-8">
+											<input class="form-control" type="text" aria-label="請輸入折扣碼" placeholder="請輸入折扣碼">
+										</div>
+										<div class="col-4">
+											<button type="button" class="btnSF btnBlud001 btn-l fs-6 fw-medium">兌換</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+
+				<!-- 共計、結帳 -->
+				<div class="shopping_cart_total">
+					<div class="row align-items-center">
+						<div class="col-12 col-lg-6">
+							<div class="count">共計 <span class=""> 6 </span> 項商品，數量 <span class=""> 6 </span> 個</div>
+						</div>
+						<div class="col-12 col-lg-6">
+							<div class="row align-items-center">
+								<div class="col-12 col-lg-9">
+									<div class="list_total"> 商品總金額： <span data-symbol="NT$ ">1,106</span></div>
+								</div>
+								<div class="col-12 col-lg-3">
+									<div class="final-check">
+										<button class="btnSF btn-xxl fs-6 fw-medium btn-checkout">結帳</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 繼續購物 -->
+				<div class="keep_shopping_btn mt-4">
+					<div class="col text-end">
+						<a href="#">繼續購物 <i class="icon icon-angle-right"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 更改尺寸、顏色 Modal 網頁用-->
+		<div class="modal fade cart-modal" id="changeModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="changeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="changeModalLabel">請選擇商品規格</h5>
+						<!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+					</div>
+					<div class="modal-body">
+						<div class="cart_info pb-3">
+							<div class="row">
+								<div class="col-2">
+									<div class="ratio ratio-1x1">
+										<img src="http://fakeimg.pl/100x100?text=img1" class="img-fluid" alt="">
+									</div>
+								</div>
+								<div class="col-10 px-3">
+									<span>U3C8711</span>
+									<h5>彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+								</div>	
+							</div>
+						</div>
+						<div class="cart_colors py-3">
+							<p>顏色</p>
+							<div class="cart-color-items">
+								<div class="cart-color-item active">
+									<img src="http://fakeimg.pl/150x240?text=img1" class="img-fluid rounded-circle" data-img="https://sunflower-mall-dev-bucket.s3.ap-northeast-1.amazonaws.com/product/17144480369917.webp" alt="">
+									<span class="ms-1">深藍色</span>
+								</div>
+								<div class="cart-color-item">
+									<img src="http://fakeimg.pl/40x40?text=img2" class="img-fluid rounded-circle" data-img="https://sunflower-mall-dev-bucket.s3.ap-northeast-1.amazonaws.com/product/17144480369917.webp" alt="">
+									<span class="ms-1">深紅色</span>
+								</div>
+								<div class="cart-color-item">
+									<img src="http://fakeimg.pl/40x40?text=img3" class="img-fluid rounded-circle" data-img="https://sunflower-mall-dev-bucket.s3.ap-northeast-1.amazonaws.com/product/17144480369917.webp" alt="">
+									<span class="ms-1">深黑色</span>
+								</div>
+								<div class="cart-color-item">
+									<img src="http://fakeimg.pl/40x40?text=img4" class="img-fluid rounded-circle" data-img="https://sunflower-mall-dev-bucket.s3.ap-northeast-1.amazonaws.com/product/17144480369917.webp" alt="">
+									<span class="ms-1">深白色</span>
+								</div>
+							</div>
+						</div>
+						<div class="cart_size py-3">
+							<p>尺寸</p>
+							<div class="cart-size-items">
+								<div class="cart-size-item active">
+									<span class="">M</span>
+								</div>
+								<div class="cart-size-item">
+									<span class="">L</span>
+								</div>
+								<div class="cart-size-item">
+									<span class="">XL</span>
+								</div>
+								<div class="cart-size-item sold_out">
+									<span class="">XXL</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer justify-content-center">
+						<button type="button" class="btnSF btnOtherGray-line btn-xxl fs-6 fw-medium mb-2" data-bs-dismiss="modal">取消</button>
+						<button type="button" class="change-modal-btn btnSF btnBlud001 btn-xxl fs-6 fw-medium mb-2">確定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 更改尺寸、顏色 Offcanvas 手機用-->
+		<div class="d-flex d-lg-none offcanvas offcanvas-bottom cart-offcanvas" tabindex="-1" id="offcanvasChangeBottom" aria-labelledby="offcanvasChangeBottomLabel" aria-hidden="true">
+			<div class="offcanvas-header justify-content-between align-items-stretch">
+				<div class="col-5">
+					<div class="offcanvas_picture img-hover">
+						<picture class="d-inline-block ratio ratio-1x1">
+							<img src="http://fakeimg.pl/600x600?text=img1" class="img-fluid" alt="">
+						</picture>
+					</div>
+				</div>
+
+				<div class="col-5 align-self-center">
+					<div class="cart-info">
+						<h5>彈性貼身平口褲.四角褲.男內褲-南洋海岸</h5>
+						<div class="offcanvas_price mt-4">
+							<p class="fs-8 fw-medium mb-0">原價：<span class="original text-decoration-line-through">960</span></p>
+							<p class="fs-6 fw-bold mb-0">優惠價：<span class="special">630</span></p>
+						</div>
+					</div>
+				</div>			
+				
+				<div class="col-1">
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+			</div>
+			<div class="offcanvas-body px-0">
+				<div class="offcanvas_colors px-3 py-2">
+					<p class="fs-8 fw-medium">顏色</p>
+					<div class="color-items">
+							<p class="color-item active" data-img="https://fakeimg.pl/925x1150/?text=img1" data-color-id="123" data-color-name="紫色"><img src="https://fakeimg.pl/50x50/cccccc/" class="rounded-circle"><span>紫色</span></p>
+							<p class="color-item" data-img="https://fakeimg.pl/1000x1000/?text=img2" data-color-id="456" data-color-name="灰藍色"><img src="https://fakeimg.pl/50x50/253766/" class="rounded-circle"><span>灰藍色</span></p>
+							<p class="color-item" data-img="https://fakeimg.pl/600x840/?text=img3" data-color-id="789" data-color-name="灰紅色"><img src="https://fakeimg.pl/50x50/c41232/" class="rounded-circle"><span>灰紅色</span></p>
+						</div>
+				</div>
+
+				<div class="offcanvas_sizes px-3 py-2">
+					<p class="fs-8 fw-medium">尺寸</p>
+					<div class="size-items">
+						<div class="size-item mt-2 me-2 sold_out" data-size="S"><span>S</span></div>
+						<div class="size-item mt-2 me-2 active" data-size="M"><span>M</span></div>
+						<div class="size-item mt-2 me-2" data-size="X"><span>X</span></div>
+						<div class="size-item mt-2 me-2 sold_out" data-size="XL"><span>XL</span></div>
+					</div>
+				</div>
+
+				<div class="offcanvas_button px-3 pt-3">
+					<div class="row">
+						<div class="col">
+							<button type="button" class="mobile_action_cancel btnSF btnOtherGray-line btn-xxl fs-6 fw-medium" data-bs-dismiss="offcanvas" aria-label="Close">取消</button>
+						</div>
+						<div class="col">
+							<button type="button" class="mobile_action_add btnSF btn-xxl fs-6 fw-medium">確定</button>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>	
+	</main>
+
+	<div data-footer="logo"></div>
+
+	<!-- 共用外部 js 檔案 -->
+	<script src="js/footer.js"></script>
+  <script src="js/header.js"></script>
+	<script src="https://kit.fontawesome.com/25b2931f6f.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
