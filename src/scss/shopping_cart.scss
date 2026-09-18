@@ -14,6 +14,35 @@
 // 	vertical-align: baseline;
 // }
 
+.shopping-cart-header {
+  .header--sub {
+    .site-header__visual {
+      background: linear-gradient(to bottom, #fff 50%, #f5f5f5 50%);
+    }
+  }
+}
+
+.btn-checkout {
+  border: 0;
+  box-shadow: none;
+  outline: 0;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus-visible {
+    border: 0;
+    box-shadow: none;
+    outline: 0;
+  }
+}
+
+.cart_list_tip {
+  p {
+    margin-bottom: 0;
+  }
+}
+
 main {
 	background-color: #f5f5f5;
 
@@ -636,7 +665,7 @@ main {
 			border-bottom: 1px solid $gray-200;
 
 			.offer_tag {
-				background-color: $gray-100;
+				background-color: $red-300;
 			}
 
 			.offer_item {
@@ -1826,7 +1855,17 @@ main {
 				justify-content: center;
 				width: 100%;
 				color: white;
-				background-color: #ff9c00;
+				background-color: $main-orange;
+
+				&:hover,
+			  &:focus,
+			  &:active,
+			  &:focus-visible {
+			    border: 0;
+			    box-shadow: none;
+			    opacity: .8;
+			    outline: 0;
+			  }
 			}
 		}
 	}
