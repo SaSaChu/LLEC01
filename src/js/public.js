@@ -223,3 +223,208 @@ document.addEventListener('DOMContentLoaded', () => {
 // 產品列表頁面 結束
 
 
+
+// 產品列詳細頁 開始
+const initProductGallery = () => {
+  const galleries = document.querySelectorAll('[data-product-gallery]');
+
+  galleries.forEach(gallery => {
+    const mainImage = gallery.querySelector('[data-gallery-main]');
+    const thumbs = Array.from(gallery.querySelectorAll('[data-gallery-thumb]'));
+    const prevButton = gallery.querySelector('[data-gallery-prev]');
+    const nextButton = gallery.querySelector('[data-gallery-next]');
+
+    if (!mainImage || !thumbs.length) return;
+
+    let currentIndex = thumbs.findIndex(thumb => thumb.classList.contains('is-active'));
+
+    if (currentIndex < 0) {
+      currentIndex = 0;
+    }
+
+    const changeImage = index => {
+      if (index < 0) {
+        index = thumbs.length - 1;
+      }
+
+      if (index >= thumbs.length) {
+        index = 0;
+      }
+
+      currentIndex = index;
+
+      const currentThumb = thumbs[currentIndex];
+      const image = currentThumb.dataset.image;
+
+      if (!image) return;
+
+      mainImage.src = image;
+
+      thumbs.forEach(thumb => {
+        thumb.classList.remove('is-active');
+      });
+
+      currentThumb.classList.add('is-active');
+
+      currentThumb.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest'
+      });
+    };
+
+    thumbs.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        changeImage(index);
+      });
+    });
+
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        changeImage(currentIndex - 1);
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        changeImage(currentIndex + 1);
+      });
+    }
+  });
+};
+
+const initProductOptions = () => {
+  const optionGroups = document.querySelectorAll('[data-option-group]');
+
+  optionGroups.forEach(group => {
+    const buttons = group.querySelectorAll('.product-options__choice:not(:disabled)');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(item => {
+          item.classList.remove('is-active');
+        });
+
+        button.classList.add('is-active');
+      });
+    });
+  });
+};
+
+const initProductQuantity = () => {
+  const quantities = document.querySelectorAll('[data-product-quantity]');
+
+  quantities.forEach(quantity => {
+    const minusButton = quantity.querySelector('[data-quantity-minus]');
+    const plusButton = quantity.querySelector('[data-quantity-plus]');
+    const input = quantity.querySelector('[data-quantity-input]');
+
+    if (!minusButton || !plusButton || !input) return;
+
+    const getMin = () => {
+      return parseInt(input.min, 10) || 1;
+    };
+
+    const getMax = () => {
+      return parseInt(input.max, 10) || 99;
+    };
+
+    const normalizeValue = value => {
+      const min = getMin();
+      const max = getMax();
+
+      if (Number.isNaN(value)) {
+        return min;
+      }
+
+      return Math.min(Math.max(value, min), max);
+    };
+
+    const updateValue = value => {
+      input.value = normalizeValue(value);
+    };
+
+    minusButton.addEventListener('click', () => {
+      const currentValue = parseInt(input.value, 10) || getMin();
+      updateValue(currentValue - 1);
+    });
+
+    plusButton.addEventListener('click', () => {
+      const currentValue = parseInt(input.value, 10) || getMin();
+      updateValue(currentValue + 1);
+    });
+
+    input.addEventListener('change', () => {
+      updateValue(parseInt(input.value, 10));
+    });
+
+    input.addEventListener('blur', () => {
+      updateValue(parseInt(input.value, 10));
+    });
+  });
+};
+
+const initProductFavorite = () => {
+  const favoriteButtons = document.querySelectorAll('[data-product-favorite]');
+
+  favoriteButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const icon = button.querySelector('i');
+
+      button.classList.toggle('is-active');
+
+      if (!icon) return;
+
+      if (button.classList.contains('is-active')) {
+        icon.classList.remove('bi-heart');
+        icon.classList.add('bi-heart-fill');
+        button.setAttribute('aria-label', '取消收藏');
+      } else {
+        icon.classList.remove('bi-heart-fill');
+        icon.classList.add('bi-heart');
+        button.setAttribute('aria-label', '加入收藏');
+      }
+    });
+  });
+};
+
+initProductGallery();
+initProductOptions();
+initProductQuantity();
+initProductFavorite();
+
+const initProductDetailTabs = () => {
+  const tabGroups = document.querySelectorAll('[data-product-tabs]');
+
+  tabGroups.forEach(group => {
+    const tabs = Array.from(group.querySelectorAll('[data-product-tab]'));
+    const panels = Array.from(group.querySelectorAll('[data-product-panel]'));
+
+    if (!tabs.length || !panels.length) return;
+
+    const changeTab = tabName => {
+      tabs.forEach(tab => {
+        const isActive = tab.dataset.productTab === tabName;
+
+        tab.classList.toggle('is-active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      panels.forEach(panel => {
+        const isActive = panel.dataset.productPanel === tabName;
+
+        panel.classList.toggle('is-active', isActive);
+        panel.hidden = !isActive;
+      });
+    };
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        changeTab(tab.dataset.productTab);
+      });
+    });
+  });
+};
+
+initProductDetailTabs();
+// 產品列詳細頁 結束
