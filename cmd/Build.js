@@ -75,6 +75,11 @@ Queue()
   .enqueue((next, Config) => Valid._Build(next, Config))
 
   .enqueue((next, Config) => {
+    require('./InlineLayout').run()
+    next(Config)
+  })
+
+  .enqueue((next, Config) => {
     Helper.Print.ln(`\n ${'【編譯完成】'.yellow}`)
     Helper.Print.ln(`${' '.repeat(3)}🎉 太棒惹，已經完成編譯囉，趕緊去看一下的吧！`)
     Helper.Print.ln(`${' '.repeat(3)}⏰ 編譯耗費時間${'：'.dim}${Helper.Display.during(startAt).lightGray}`)

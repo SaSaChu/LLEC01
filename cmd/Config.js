@@ -92,6 +92,7 @@ module.exports = {
       '.jpeg',
       '.gif',
       '.ico',
+      '.webp',
     ]
 
   },

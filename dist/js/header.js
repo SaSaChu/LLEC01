@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerTarget = document.querySelector('[data-header]');
 
   if (!headerTarget) {
+    initMobileMenu();
     return;
   }
 

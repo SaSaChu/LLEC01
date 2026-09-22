@@ -40,12 +40,152 @@
 
 <body>
 
-	<div data-header="sub" class="shopping-cart-header"></div>
+	<div class="shopping-cart-header">
+<header class="site-header header--sub">
+
+  <div class="site-header__top">
+    <div class="container site-header__top-inner">
+      <nav class="site-header__top-nav">
+        <a href="#">回首頁</a>
+        <a href="#">關於我們</a>
+        <a href="#">聯絡我們</a>
+        <a href="#">隱私權政策</a>
+      </nav>
+
+      <div class="site-header__marquee">
+        <div class="site-header__marquee-mask">
+          <div class="site-header__marquee-text">全館消費滿 $150 免運</div>
+        </div>
+      </div>
+
+      <nav class="site-header__member-nav">
+        <a href="#">會員中心</a>
+        <a href="#">折價券</a>
+        <a href="#">訂單查詢</a>
+        <a href="#">購物車</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="container site-header__main-inner">
+      <a href="#" class="site-header__logo">
+        <img src="images/logo.png" alt="Logo">
+      </a>
+
+      <div class="site-header__search">
+        <div class="site-header__search-category">所有分類</div>
+        <input type="text" placeholder="搜尋商品關鍵字">
+        <button type="button" class="site-header__search-submit">搜尋</button>
+      </div>
+
+      <div class="site-header__icons">
+
+        <button type="button" class="site-header__icon-btn site-header__icon-btn--search" aria-label="搜尋">
+          <span class="site-header__icon-circle">
+            <span class="site-header__icon site-header__icon--search"></span>
+          </span>
+        </button>
+
+        <button type="button" class="site-header__icon-btn site-header__icon-btn--member js-mobile-menu-open" aria-label="會員中心">
+          <span class="site-header__icon-circle">
+            <span class="site-header__icon site-header__icon--member"></span>
+          </span>
+        </button>
+
+        <button type="button" class="site-header__icon-btn js-mobile-menu-open" aria-label="收藏">
+          <span class="site-header__icon-circle">
+            <span class="site-header__icon site-header__icon--heart"></span>
+          </span>
+        </button>
+
+        <button type="button" class="site-header__icon-btn js-mobile-menu-open" aria-label="購物車">
+          <span class="site-header__icon-circle">
+            <span class="site-header__icon site-header__icon--cart"></span>
+          </span>
+          <span class="site-header__cart-count">2</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-header__visual">
+
+    <div class="site-header__nav-wrap">
+      <div class="container">
+        <div class="site-header__nav">
+          <nav class="site-header__category-nav">
+            <a href="#">商品選單01</a>
+            <a href="#">商品選單02</a>
+            <a href="#">商品選單03</a>
+            <a href="#">商品選單04</a>
+            <a href="#">商品選單05</a>
+          </nav>
+
+          <a href="#" class="site-header__sale">
+            <span>現在加入立即享 7 折優惠</span>
+            <strong>SALE</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-header__mobile-nav">
+      <button type="button" class="site-header__mobile-menu-btn js-mobile-menu-open">
+        <i class="bi bi-list"></i>
+        <span>Menu選單</span>
+      </button>
+
+      <div class="site-header__mobile-notice">
+        <div class="site-header__mobile-marquee">
+          <span>跑馬燈文字顯示區域</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-menu-overlay js-mobile-menu-overlay"></div>
+
+  <aside class="mobile-menu mobile-menu--sub js-mobile-menu">
+    <div class="mobile-menu__header">
+      <a href="#" class="mobile-menu__logo">
+        <img src="images/logo.png" alt="Logo">
+      </a>
+
+      <button type="button" class="mobile-menu__close js-mobile-menu-close" aria-label="關閉選單">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <div class="mobile-menu__account">
+      <div class="mobile-menu__account-name">Hi, 王小明</div>
+
+      <div class="mobile-menu__account-links">
+        <a href="#">前往會員中心</a>
+        <a href="#">訂單查詢</a>
+        <a href="#">我的收藏</a>
+        <a href="#">登出</a>
+      </div>
+    </div>
+
+    <nav class="mobile-menu__nav">
+      <a href="#">商品選單01</a>
+      <a href="#">商品選單02</a>
+      <a href="#">商品選單03</a>
+      <a href="#">商品選單04</a>
+      <a href="#">商品選單05</a>
+    </nav>
+
+    <div class="mobile-menu__bottom-bar"></div>
+  </aside>
+
+</header>
+</div>
 
 	<main class="pb-5">	
 		<div class="container">
 			<div class="col-12 col-lg-11 mx-auto">
-				<div class="shopping_cart_step pt-lg-5">
+				<div class="shopping_cart_step pt-5">
 					<div class="row">
 						<div class="col">
 							<h4 class="active">➊  確認訂購內容</h4>
@@ -1041,7 +1181,21 @@
 		</div>	
 	</main>
 
-	<div data-footer="logo"></div>
+	<footer class="site-footer footer--simple">
+  <div class="container site-footer__simple-inner">
+
+    <div class="site-footer__simple-copyright">台灣三花著作權所有 保留一切權利</div>
+
+    <nav class="site-footer__simple-nav">
+      <a href="#">聯絡三花</a>
+      <a href="#">常見問題</a>
+      <a href="#">隱私權條款</a>
+      <a href="#">使用條款</a>
+      <a href="#">Cookie政策</a>
+    </nav>
+
+  </div>
+</footer>
 
 	<!-- 共用外部 js 檔案 -->
 	<script src="js/footer.js"></script>
