@@ -10,6 +10,24 @@
 @import "layout/footer";
 @import "layout/header";
 
+.border-bottom-dotted {
+    border-bottom: 1px dotted #dee2e6;
+    background-color: transparent;
+}
+
+.border-bottom-dotted-Blue {
+    border-bottom: 1px dotted #3D6DC1;
+    background-color: transparent;
+}
+
+
+.account-redLine {
+    border-bottom: 3px solid $main-red;
+}
+
+.account-grayLine {
+    border-bottom: 3px solid $gray-500;
+}
 
 .title-boxs {
 	display: inline-block;
@@ -402,15 +420,20 @@
 }
 
 .accoutn-contact-icon {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  line-height: 18px;
-  color: white;
-  text-align: center;
-  background-color: $blue-005;
-  border-radius: 10px;
-  margin-right: 5px;
+  display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	color: $white;
+	background-color: $blue-005;
+	border-radius: 50%;
+	margin-right: 5px;
+	vertical-align: middle;
+
+	i {
+		font-size: 13px;
+	}
 }
 
 .accoutn-phoneBoxs {

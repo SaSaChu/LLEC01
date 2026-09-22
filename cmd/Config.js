@@ -86,6 +86,7 @@ module.exports = {
       '.svg',
       '.ttf',
       '.woff',
+      '.woff2',
 
       '.png',
       '.jpg',
