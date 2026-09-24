@@ -69,7 +69,7 @@
           </span>
         </button>
 
-        <button type="button" class="site-header__icon-btn site-header__icon-btn--member js-mobile-menu-open" aria-label="會員中心">
+        <button type="button" class="site-header__icon-btn site-header__icon-btn--member js-login-open" aria-label="會員登入">
           <span class="site-header__icon-circle">
             <span class="site-header__icon site-header__icon--member"></span>
           </span>
@@ -160,6 +160,29 @@
 
     <div class="mobile-menu__bottom-bar"></div>
   </aside>
+
+
+  <div class="login-modal js-login-modal" aria-hidden="true">
+    <div class="login-modal__overlay js-login-close"></div>
+    <div class="login-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
+      <button type="button" class="login-modal__close js-login-close" aria-label="關閉登入視窗">×</button>
+      <h2 id="login-modal-title" class="login-modal__title">會員登入</h2>
+      <form class="login-modal__form">
+        <input class="login-modal__input" type="tel" inputmode="numeric" placeholder="手機號碼" aria-label="手機號碼">
+        <input class="login-modal__input" type="password" placeholder="8-16碼英數混合，區分大小寫" aria-label="密碼">
+        <div class="login-modal__captcha-row">
+          <input class="login-modal__input login-modal__captcha-input" type="text" placeholder="驗證碼" aria-label="驗證碼">
+          <div class="login-modal__captcha" aria-label="驗證碼圖片">4667</div>
+          <button type="button" class="login-modal__refresh" aria-label="重新產生驗證碼">↻</button>
+        </div>
+        <a class="login-modal__forgot" href="#"><i class="bi bi-lock"></i><span>忘記密碼</span></a>
+        <button type="submit" class="login-modal__submit">登入/註冊</button>
+        <div class="login-modal__or"><span>or</span></div>
+        <button type="button" class="login-modal__line"><span class="login-modal__line-mark">LINE</span><span>快速登入</span></button>
+        <p class="login-modal__terms">登入或完成註冊代表您同意 <a href="#">隱私條款</a> 和 <a href="#">使用條款</a></p>
+      </form>
+    </div>
+  </div>
 
 </header>
 

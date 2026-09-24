@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!headerTarget) {
     initMobileMenu();
+    initLoginModal();
     return;
   }
 
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       headerTarget.innerHTML = html;
 
       initMobileMenu();
+      initLoginModal();
 
     })
     .catch(error => {
@@ -159,4 +161,50 @@ function initMobileMenu() {
 
   });
 
+}
+
+// =========================================================
+// Login Modal
+// =========================================================
+function initLoginModal() {
+  const modal = document.querySelector('.js-login-modal');
+  const openButtons = document.querySelectorAll('.js-login-open');
+
+  if (!modal || !openButtons.length || modal.dataset.initialized === 'true') {
+    return;
+  }
+
+  modal.dataset.initialized = 'true';
+  const closeButtons = modal.querySelectorAll('.js-login-close');
+
+  function openModal() {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('login-modal-open');
+    const firstInput = modal.querySelector('input');
+    if (firstInput) firstInput.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('login-modal-open');
+  }
+
+  openButtons.forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      openModal();
+    });
+  });
+
+  closeButtons.forEach(button => {
+    button.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
 }

@@ -900,3 +900,212 @@ body.mobile-menu-open {
     display: none !important;
   }
 }
+
+/* Login Modal */
+.login-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  &.is-open {
+    display: flex;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+  }
+
+  &__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 445px);
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 26px 24px 22px;
+    background: #fff;
+    border-radius: 4px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #7f7f7f;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  &__title {
+    margin: 0 0 20px;
+    color: $main-black;
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 48px;
+    padding: 0 22px;
+    border: 1px solid #ccd2d8;
+    border-radius: 4px;
+    color: $main-black;
+    background: #fff;
+    font-size: 18px;
+
+    &::placeholder {
+      color: #aeb8c3;
+    }
+  }
+
+  &__captcha-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 118px 46px;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__captcha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    overflow: hidden;
+    color: #8a35c5;
+    background: repeating-linear-gradient(-8deg, #eef1f4 0, #eef1f4 4px, #d5dce2 5px, #d5dce2 6px);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 8px;
+  }
+
+  &__refresh {
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    background: #07579b;
+    font-size: 27px;
+  }
+
+  &__forgot {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    color: $main-black;
+    font-size: 18px;
+    text-decoration: none;
+
+    i {
+      color: $blue-005;
+      font-size: 20px;
+    }
+  }
+
+  &__submit {
+    height: 48px;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    background: #858585;
+    font-size: 20px;
+  }
+
+  &__or {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #999;
+    font-size: 18px;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #ddd;
+    }
+  }
+
+  &__line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    height: 68px;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    background: #00c300;
+    font-size: 22px;
+  }
+
+  &__line-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 34px;
+    border-radius: 50%;
+    color: #00c300;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  &__terms {
+    margin: 0;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+
+    a {
+      color: #3368c6;
+      text-decoration: underline;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 16px;
+
+    &__dialog {
+      padding: 24px 18px 20px;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__captcha-row {
+      grid-template-columns: minmax(0, 1fr) 100px 44px;
+      gap: 8px;
+    }
+
+    &__input {
+      padding: 0 14px;
+      font-size: 16px;
+    }
+  }
+}
+
+body.login-modal-open {
+  overflow: hidden;
+}
