@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!headerTarget) {
     initMobileMenu();
     initLoginModal();
+    initHeaderCategory();
     return;
   }
 
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       initMobileMenu();
       initLoginModal();
+      initHeaderCategory();
 
     })
     .catch(error => {
@@ -161,6 +163,47 @@ function initMobileMenu() {
 
   });
 
+}
+
+
+
+// =========================================================
+// Header Category Dropdown
+// =========================================================
+
+function initHeaderCategory() {
+  const toggle = document.querySelector('.js-header-category-toggle');
+  const menu = document.querySelector('.js-header-category-menu');
+
+  if (!toggle || !menu || toggle.dataset.categoryReady === 'true') {
+    return;
+  }
+
+  toggle.dataset.categoryReady = 'true';
+
+  function closeMenu() {
+    toggle.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('is-open');
+  }
+
+  toggle.addEventListener('click', event => {
+    event.stopPropagation();
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    menu.classList.toggle('is-open', !isOpen);
+  });
+
+  menu.addEventListener('click', event => {
+    event.stopPropagation();
+  });
+
+  document.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
+  });
 }
 
 // =========================================================

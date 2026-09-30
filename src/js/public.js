@@ -21,12 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggles.forEach(toggle => {
       toggle.addEventListener('click', () => {
-        const item = toggle.parentElement;
+        const item = toggle.closest('.filter-category__level1, .filter-category__level2');
         const icon = toggle.querySelector('i');
 
         if (!item) return;
 
         item.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', item.classList.contains('is-open') ? 'true' : 'false');
 
         if (icon) {
           icon.classList.toggle('bi-chevron-right', !item.classList.contains('is-open'));
