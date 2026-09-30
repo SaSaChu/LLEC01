@@ -59,7 +59,17 @@
       </a>
 
       <div class="site-header__search">
-        <div class="site-header__search-category">所有分類</div>
+        <div class="site-header__search-category">
+          <button type="button" class="site-header__search-category-toggle js-header-category-toggle" aria-expanded="false" aria-controls="header-category-menu">
+            <span>所有分類</span>
+            <span class="site-header__search-category-arrow" aria-hidden="true"></span>
+          </button>
+          <div id="header-category-menu" class="site-header__search-category-menu js-header-category-menu">
+            <a href="#">第一層選單01</a>
+            <a href="#">第一層選單02</a>
+            <a href="#">第一層選單03</a>
+          </div>
+        </div>
         <input type="text" placeholder="搜尋商品關鍵字">
         <button type="button" class="site-header__search-submit">搜尋</button>
       </div>
